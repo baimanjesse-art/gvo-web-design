@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
+
+  /* Black / grey base surfaces */
+  --color-ink-950: #050505;
+  --color-ink-900: #0a0a0a;
+  --color-ink-850: #101010;
+  --color-ink-800: #141414;
+  --color-ink-700: #1a1a1a;
+  --color-ink-600: #222222;
+  --color-ink-500: #2a2a2a;
+
+  /* Metallic silver / chrome accent ramp */
+  --color-silver-100: #f2f2f2;
+  --color-silver-200: #e8e8e8;
+  --color-silver-300: #cfcfcf;
+  --color-silver-400: #a8a8a8;
+  --color-silver-500: #8a8a8a;
+  --color-silver-600: #6b6b6b;
+  --color-silver-700: #4a4a4a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-900 font-body text-neutral-400 antialiased;
+}
+
+::selection {
+  background-color: #e8e8e8;
+  color: #0a0a0a;
+}
+
+/* ---------- Metallic / chrome treatments ---------- */
+
+/* Chrome text: brushed-steel vertical gradient with a hard "horizon" flip */
+.text-chrome {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e6e6e6 24%,
+    #b4b4b4 42%,
+    #6f6f6f 50%,
+    #dedede 55%,
+    #8f8f8f 74%,
+    #cccccc 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Softer silver gradient for smaller headings */
+.text-chrome-soft {
+  background-image: linear-gradient(180deg, #f4f4f4 0%, #bdbdbd 55%, #8a8a8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Metallic button */
+.btn-chrome {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-display text-sm font-bold tracking-wide text-ink-900 transition duration-200;
+  background-image: linear-gradient(180deg, #f7f7f7 0%, #c9c9c9 45%, #9e9e9e 55%, #d9d9d9 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 0 22px rgba(255, 255, 255, 0.07);
+}
+.btn-chrome:hover {
+  filter: brightness(1.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 0 32px rgba(255, 255, 255, 0.14);
+}
+
+/* Ghost / outline button */
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-6 py-3 font-display text-sm font-semibold tracking-wide text-silver-200 transition duration-200;
+}
+.btn-ghost:hover {
+  @apply border-white/30 bg-white/5;
+}
+
+/* Thin metallic divider */
+.chrome-hr {
+  @apply h-px w-full border-0;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 200, 200, 0.45) 50%,
+    transparent 100%
+  );
+}
+
+/* Feather the hero video's edges so it melts into the black hero background */
+.hero-video-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    #000 55%,
+    rgba(0, 0, 0, 0.4) 78%,
+    transparent 97%
+  );
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    #000 55%,
+    rgba(0, 0, 0, 0.4) 78%,
+    transparent 97%
+  );
+}
+
+/* Calendly iframe container */
+.calendly-inline-widget iframe {
+  border-radius: 0.75rem;
+}

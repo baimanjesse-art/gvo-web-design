@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p public/videos public/images/logo public/images/team src/components/ui src/data)",
+      "Bash(cp /root/.claude/uploads/3201e325-b8a6-54b2-b360-c098f054ebe4/c62addd3-hf_20260705_023228_b1de682a4a1f4aac9e95a594510a45da.mp4 public/videos/gvo-logo-sweep.mp4)"
+    ]
+  }
+}
