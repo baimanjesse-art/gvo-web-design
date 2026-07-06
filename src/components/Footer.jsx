@@ -11,10 +11,9 @@ const LINKS = [
   { label: 'Reviews', id: 'reviews' },
 ]
 
-/* PLACEHOLDER: swap in the real contact email / phone before launch */
 const CONTACT = {
-  email: 'hello@gvowebdesign.com',
-  phone: '(555) 012-3456',
+  email: 'baimanjesse@gmail.com',
+  phone: '(610) 680 7969',
 }
 
 /* PLACEHOLDER: point these at the real social profiles before launch */
