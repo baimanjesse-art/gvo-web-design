@@ -1,6 +1,7 @@
 import Reveal from './ui/Reveal.jsx'
 import SectionHeading from './ui/SectionHeading.jsx'
 import { TIERS, CUSTOM_TIER, ADDONS, PAYMENT_TERMS, fmt } from '../data/pricing.js'
+import { useNavigation } from '../context/NavigationContext.jsx'
 
 function Check() {
   return (
@@ -22,13 +23,14 @@ function DetailRow({ label, children }) {
 }
 
 function TierCard({ tier, delay }) {
+  const { goTo } = useNavigation()
   return (
     <Reveal delay={delay} className="h-full">
       <article
         className={`relative flex h-full flex-col rounded-2xl border p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${
           tier.popular
-            ? 'border-silver-400/40 bg-ink-700 ring-1 ring-silver-400/25'
-            : 'border-white/8 bg-ink-800'
+            ? 'border-silver-400/40 bg-ink-700/90 ring-1 ring-silver-400/25 backdrop-blur-sm'
+            : 'border-white/8 bg-ink-800/90 backdrop-blur-sm'
         }`}
       >
         {tier.popular && (
@@ -80,17 +82,18 @@ function TierCard({ tier, delay }) {
           </DetailRow>
         </div>
 
-        <a href="#order" className={`${tier.popular ? 'btn-chrome' : 'btn-ghost'} mt-7 w-full`}>
+        <button onClick={() => goTo('order')} className={`${tier.popular ? 'btn-chrome' : 'btn-ghost'} mt-7 w-full`}>
           Choose {tier.name}
-        </a>
+        </button>
       </article>
     </Reveal>
   )
 }
 
 export default function Pricing() {
+  const { goTo } = useNavigation()
   return (
-    <section id="pricing" className="scroll-mt-16 bg-ink-850 px-4 py-24 sm:px-6 md:py-32">
+    <section id="pricing" className="px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Pricing"
@@ -104,9 +107,9 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Custom tier — full-width card */}
+        {/* Custom tier, full-width card */}
         <Reveal className="mt-6">
-          <article className="flex flex-col gap-8 rounded-2xl border border-white/8 bg-ink-800 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] md:flex-row md:items-center md:p-9">
+          <article className="flex flex-col gap-8 rounded-2xl border border-white/8 bg-ink-800/90 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm md:flex-row md:items-center md:p-9">
             <div className="md:w-1/3">
               <h3 className="font-display text-lg font-bold text-silver-200">{CUSTOM_TIER.name}</h3>
               <p className="text-chrome mt-3 font-display text-3xl font-extrabold">Quoted per project</p>
@@ -124,9 +127,9 @@ export default function Pricing() {
               </DetailRow>
             </div>
             <div className="md:pl-2">
-              <a href="#book" className="btn-chrome w-full md:w-auto">
+              <button onClick={() => goTo('book')} className="btn-chrome w-full md:w-auto">
                 Book a Consultation
-              </a>
+              </button>
             </div>
           </article>
         </Reveal>
@@ -139,7 +142,7 @@ export default function Pricing() {
           <p className="mt-2 text-center text-sm text-neutral-500">
             Mix & match features across tiers instead of buying a full upgrade.
           </p>
-          <div className="mx-auto mt-7 max-w-3xl overflow-hidden rounded-2xl border border-white/8 bg-ink-800">
+          <div className="mx-auto mt-7 max-w-3xl overflow-hidden rounded-2xl border border-white/8 bg-ink-800/90 backdrop-blur-sm">
             <ul className="divide-y divide-white/5">
               {ADDONS.map((addon) => (
                 <li key={addon.id} className="flex items-center justify-between gap-4 px-6 py-4">
@@ -165,7 +168,7 @@ export default function Pricing() {
 
         {/* Payment terms */}
         <Reveal className="mx-auto mt-10 max-w-3xl">
-          <div className="rounded-xl border border-white/8 bg-ink-900 px-6 py-5">
+          <div className="rounded-xl border border-white/8 bg-ink-900/85 px-6 py-5 backdrop-blur-sm">
             <p className="font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-silver-600">
               Payment terms
             </p>

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Reveal from './ui/Reveal.jsx'
 import SectionHeading from './ui/SectionHeading.jsx'
 import { TIERS, CUSTOM_TIER, ADDONS, fmt } from '../data/pricing.js'
+import { useNavigation } from '../context/NavigationContext.jsx'
 
 const ALL_TIERS = [...TIERS, CUSTOM_TIER]
 
@@ -90,6 +91,7 @@ function CountStepper({ value, onChange }) {
 }
 
 export default function Order() {
+  const { goTo } = useNavigation()
   const [step, setStep] = useState(1)
   const [info, setInfo] = useState({
     businessName: '',
@@ -164,8 +166,8 @@ export default function Order() {
   }
 
   const submitOrder = () => {
-    /* No backend yet — the order payload is logged for now and a confirmation
-       screen is shown. Wire this to a real endpoint / email service later. */
+    /* No backend yet. The order payload is logged for now and a confirmation
+       screen is shown. Wire this to a real endpoint or email service later. */
     const order = {
       ...info,
       package: tier?.name,
@@ -181,16 +183,16 @@ export default function Order() {
   const setField = (key) => (ev) => setInfo((v) => ({ ...v, [key]: ev.target.value }))
 
   return (
-    <section id="order" className="scroll-mt-16 bg-ink-850 px-4 py-24 sm:px-6 md:py-32">
+    <section id="order" className="px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           eyebrow="Place Your Order"
           title="Start your build"
-          sub="Four quick steps — tell us who you are, pick your package, and we'll take it from there."
+          sub="Four quick steps: tell us who you are, pick your package, and we'll take it from there."
         />
 
         <Reveal>
-          <div className="rounded-2xl border border-white/8 bg-ink-800 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-9">
+          <div className="rounded-2xl border border-white/8 bg-ink-800/90 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm sm:p-9">
             {submitted ? (
               <div className="py-10 text-center">
                 <div className="btn-chrome mx-auto flex h-16 w-16 items-center justify-center !rounded-full !p-0">
@@ -200,14 +202,14 @@ export default function Order() {
                 </div>
                 <h3 className="text-chrome mt-6 font-display text-3xl font-extrabold">Order received</h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-neutral-400">
-                  Thanks, {info.contactName.split(' ')[0] || 'friend'} — we've got everything we need
+                  Thanks, {info.contactName.split(' ')[0] || 'friend'}, we've got everything we need
                   to get started on <span className="text-silver-200">{info.businessName}</span>. We'll
                   reach out at <span className="text-silver-200">{info.email}</span> within 24 hours to
                   confirm details and arrange the deposit.
                 </p>
                 <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                  <a href="#book" className="btn-chrome">Book your consultation now</a>
-                  <a href="#home" className="btn-ghost">Back to top</a>
+                  <button onClick={() => goTo('book')} className="btn-chrome">Book your consultation now</button>
+                  <button onClick={() => goTo('home')} className="btn-ghost">Back to home</button>
                 </div>
               </div>
             ) : (
@@ -290,7 +292,7 @@ export default function Order() {
                         {errors.tier && <p className={errCls}>{errors.tier}</p>}
 
                         <p className="mt-8 font-display text-xs font-semibold uppercase tracking-[0.14em] text-silver-500">
-                          Add-ons <span className="normal-case tracking-normal text-neutral-600">(optional — mix & match)</span>
+                          Add-ons <span className="normal-case tracking-normal text-neutral-600">(optional, mix &amp; match)</span>
                         </p>
                         <ul className="mt-3 divide-y divide-white/5 rounded-xl border border-white/10 bg-ink-900">
                           {ADDONS.map((addon) => {
@@ -345,7 +347,7 @@ export default function Order() {
                           <span className="font-display text-sm font-semibold text-silver-400">Estimated total</span>
                           <span className="text-right">
                             <span className="text-chrome block font-display text-2xl font-extrabold">
-                              {isCustom ? 'Quoted per project' : tier && totals ? fmt(totals.oneTime) : '—'}
+                              {isCustom ? 'Quoted per project' : tier && totals ? fmt(totals.oneTime) : 'Select a package'}
                             </span>
                             {!isCustom && totals && totals.monthly > 0 && (
                               <span className="text-xs text-neutral-500">+ {fmt(totals.monthly)}/mo</span>
@@ -365,7 +367,7 @@ export default function Order() {
                             </h3>
                             <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-neutral-400">
                               Tell us about your services, coverage area, and the jobs you want more
-                              of — it takes about five minutes and gives us everything we need to
+                              of. It takes about five minutes and gives us everything we need to
                               write and structure your site.
                             </p>
                             <a
@@ -380,7 +382,7 @@ export default function Order() {
                               </svg>
                             </a>
                             <p className="mt-4 text-xs text-neutral-600">
-                              Opens in a new tab — you can also finish it after placing your order.
+                              Opens in a new tab. You can also finish it after placing your order.
                             </p>
                           </div>
                         ) : (
@@ -394,7 +396,7 @@ export default function Order() {
                               <span className="text-silver-200">
                                 {info.industry === 'Other' ? 'your industry' : info.industry}
                               </span>{' '}
-                              is coming soon — we'll email you a custom questionnaire within 24 hours
+                              is coming soon. We'll email you a custom questionnaire within 24 hours
                               of receiving your order.
                             </p>
                           </div>
@@ -422,7 +424,7 @@ export default function Order() {
                             <dd className="text-right text-neutral-200">
                               {tier?.name}{' '}
                               <span className="text-neutral-500">
-                                {isCustom ? '(quoted per project)' : `— ${fmt(tier.price)}`}
+                                {isCustom ? '(quoted per project)' : fmt(tier.price)}
                               </span>
                             </dd>
                           </div>
@@ -448,7 +450,7 @@ export default function Order() {
                           <div>
                             <p className="text-sm text-neutral-500">One-time total</p>
                             <p className="text-chrome font-display text-3xl font-extrabold">
-                              {isCustom ? 'Quoted' : totals ? fmt(totals.oneTime) : '—'}
+                              {isCustom ? 'Quoted' : totals ? fmt(totals.oneTime) : 'TBD'}
                             </p>
                             {!isCustom && totals && totals.monthly > 0 && (
                               <p className="mt-1 text-xs text-neutral-500">plus {fmt(totals.monthly)}/mo ongoing</p>
@@ -457,7 +459,7 @@ export default function Order() {
                           <div className="text-right">
                             <p className="text-sm text-neutral-500">Deposit due today (50%)</p>
                             <p className="text-chrome-soft font-display text-2xl font-extrabold">
-                              {isCustom ? 'Quoted' : totals ? fmt(totals.deposit) : '—'}
+                              {isCustom ? 'Quoted' : totals ? fmt(totals.deposit) : 'TBD'}
                             </p>
                           </div>
                         </div>
@@ -486,7 +488,7 @@ export default function Order() {
                               exit={{ opacity: 0, height: 0 }}
                               className="mt-3 overflow-hidden rounded-lg border border-silver-400/20 bg-ink-900 px-4 py-3 text-center text-xs text-neutral-400"
                             >
-                              Payment setup coming soon — place your order below and we'll follow up
+                              Payment setup coming soon. Place your order below and we'll follow up
                               via email to arrange the deposit.
                             </motion.p>
                           )}
@@ -496,7 +498,7 @@ export default function Order() {
                           Place Order
                         </button>
                         <p className="mt-3 text-center text-xs text-neutral-600">
-                          No payment is collected now. Submitting sends us your order details — we'll
+                          No payment is collected now. Submitting sends us your order details. We'll
                           confirm everything by email before any work or charges begin.
                         </p>
                       </div>

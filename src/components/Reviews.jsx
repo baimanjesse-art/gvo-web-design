@@ -3,20 +3,20 @@ import SectionHeading from './ui/SectionHeading.jsx'
 
 /*
  * Testimonials are seeded content written to match the portfolio's
- * client roster — replace with real client reviews as they come in.
+ * client roster. Replace with real client reviews as they come in.
  * Intentionally NOT labeled as placeholders in the visible UI.
  */
 const REVIEWS = [
   {
     quote:
-      'Jesse and Elliott had us live in six days — two ahead of schedule. The quote-request form basically replaced my voicemail, and spring bookings nearly doubled. Any time I emailed, I had an answer within the hour.',
+      'Jesse and Elliott had us live in six days, two ahead of schedule. The quote-request form basically replaced my voicemail, and spring bookings nearly doubled. Any time I emailed, I had an answer within the hour.',
     name: 'Dana Whitfield',
     business: 'Sierra Ridge Landscaping',
     industry: 'Landscaping',
   },
   {
     quote:
-      "They rebuilt our site right before brunch season and tied it into our online ordering. Menu changes happen same-day through the maintenance plan — I text Jesse a photo of the new specials board and it's up before the lunch rush.",
+      "They rebuilt our site right before brunch season and tied it into our online ordering. Menu changes happen same-day through the maintenance plan. I text Jesse a photo of the new specials board and it's up before the lunch rush.",
     name: 'Marcus Trejo',
     business: 'Harvest & Hearth Café',
     industry: 'Restaurant / Café',
@@ -30,7 +30,7 @@ const REVIEWS = [
   },
   {
     quote:
-      'I expected a website; I got a real online store. Twenty-five products photographed, organized, and live — the storefront paid for itself the first weekend with local pickup orders. Worth every penny.',
+      'I expected a website; I got a real online store. Twenty-five products photographed, organized, and live. The storefront paid for itself the first weekend with local pickup orders. Worth every penny.',
     name: 'Elaine Roos',
     business: 'Juniper & Main',
     industry: 'Boutique Retail',
@@ -61,18 +61,18 @@ function Stars() {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="scroll-mt-16 bg-ink-850 px-4 py-24 sm:px-6 md:py-32">
+    <section id="reviews" className="px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Reviews"
           title="What clients say"
-          sub="Local owners, real outcomes — turnaround, communication, and results you can measure."
+          sub="Local owners, real outcomes. Turnaround, communication, and results you can measure."
         />
 
         <div className="grid gap-6 md:grid-cols-2">
           {REVIEWS.map((review, i) => (
             <Reveal key={review.name} delay={(i % 2) * 0.12} className="h-full">
-              <figure className="flex h-full flex-col rounded-2xl border border-white/8 bg-ink-800 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+              <figure className="flex h-full flex-col rounded-2xl border border-white/8 bg-ink-800/90 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm">
                 <Stars />
                 <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-300">
                   “{review.quote}”

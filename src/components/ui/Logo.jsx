@@ -52,7 +52,7 @@ export function CodeMark({ className = 'h-6 w-auto' }) {
  */
 export default function Logo({ compact = false }) {
   return (
-    <a href="#home" className="group flex items-center gap-3" aria-label="GVO Web Design — home">
+    <span className="group flex items-center gap-3" aria-label="GVO Web Design home">
       <span className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-ink-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
         <CodeMark className="h-4 w-auto" />
       </span>
@@ -64,6 +64,6 @@ export default function Logo({ compact = false }) {
           </span>
         )}
       </span>
-    </a>
+    </span>
   )
 }

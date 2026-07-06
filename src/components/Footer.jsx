@@ -1,13 +1,14 @@
 import Logo from './ui/Logo.jsx'
+import { useNavigation } from '../context/NavigationContext.jsx'
 
 const LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Book Consultation', href: '#book' },
-  { label: 'Order', href: '#order' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'Reviews', href: '#reviews' },
+  { label: 'Home', id: 'home' },
+  { label: 'About', id: 'about' },
+  { label: 'Pricing', id: 'pricing' },
+  { label: 'Book Consultation', id: 'book' },
+  { label: 'Order', id: 'order' },
+  { label: 'Our Work', id: 'work' },
+  { label: 'Reviews', id: 'reviews' },
 ]
 
 /* PLACEHOLDER: swap in the real contact email / phone before launch */
@@ -45,8 +46,9 @@ const SOCIALS = [
 ]
 
 export default function Footer() {
+  const { goTo } = useNavigation()
   return (
-    <footer className="border-t border-white/5 bg-ink-950 px-4 pb-8 pt-16 sm:px-6">
+    <footer className="border-t border-white/5 bg-ink-950/90 px-4 pb-8 pt-16 backdrop-blur-md sm:px-6">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
@@ -55,7 +57,7 @@ export default function Footer() {
               Good Vibes Only.
             </p>
             <p className="mt-2 max-w-xs text-sm leading-relaxed text-neutral-500">
-              Websites built for local businesses that want to grow — designed, launched, and
+              Websites built for local businesses that want to grow. Designed, launched, and
               maintained by GVO.
             </p>
             <div className="mt-6 flex gap-3">
@@ -80,10 +82,13 @@ export default function Footer() {
             </p>
             <ul className="mt-4 space-y-2.5">
               {LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="text-sm text-neutral-500 transition hover:text-silver-200">
+                <li key={link.id}>
+                  <button
+                    onClick={() => goTo(link.id)}
+                    className="cursor-pointer text-sm text-neutral-500 transition hover:text-silver-200"
+                  >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -117,9 +122,9 @@ export default function Footer() {
                   <path d="M12 7v5l3 3" />
                 </svg>
                 <span>
-                  Mon–Fri 5:30–9:00 PM
+                  Mon to Fri 5:30 to 9:00 PM
                   <br />
-                  Sat–Sun 11:00 AM–8:00 PM
+                  Sat to Sun 11:00 AM to 8:00 PM
                 </span>
               </li>
             </ul>

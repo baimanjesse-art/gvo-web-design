@@ -2,18 +2,18 @@ import { useEffect } from 'react'
 import Reveal from './ui/Reveal.jsx'
 import SectionHeading from './ui/SectionHeading.jsx'
 
-/* PLACEHOLDER: replace with real Calendly link before deployment */
+/* Real Calendly scheduling link. Everything after the "?" styles the embed. */
 const CALENDLY_URL =
   'https://calendly.com/gvo-web-design/consultation?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8e8e8&primary_color=c0c0c0'
 
 const HOURS = [
-  { days: 'Mon – Fri', hours: '5:30 PM – 9:00 PM' },
-  { days: 'Sat – Sun', hours: '11:00 AM – 8:00 PM' },
+  { days: 'Mon to Fri', hours: '5:30 PM to 9:00 PM' },
+  { days: 'Sat to Sun', hours: '11:00 AM to 8:00 PM' },
 ]
 
 export default function Booking() {
   useEffect(() => {
-    // Calendly inline embed script — injected once, reused on re-mounts
+    // Calendly inline embed script, injected once and reused on re-mounts
     if (!document.querySelector('script[src*="calendly.com/assets/external/widget.js"]')) {
       const script = document.createElement('script')
       script.src = 'https://assets.calendly.com/assets/external/widget.js'
@@ -23,12 +23,12 @@ export default function Booking() {
   }, [])
 
   return (
-    <section id="book" className="scroll-mt-16 bg-ink-900 px-4 py-24 sm:px-6 md:py-32">
+    <section id="book" className="px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
           eyebrow="Book a Consultation"
           title="Let's talk about your project"
-          sub="Pick a time that works for you — consultations are free, no pressure, and usually take about 20 minutes."
+          sub="Pick a time that works for you. Consultations are free, no pressure, and usually take about 20 minutes."
         />
 
         <Reveal>
@@ -36,7 +36,7 @@ export default function Booking() {
             {HOURS.map((slot) => (
               <div
                 key={slot.days}
-                className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/8 bg-ink-800 px-5 py-3.5 sm:w-auto"
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/8 bg-ink-800/90 px-5 py-3.5 backdrop-blur-sm sm:w-auto"
               >
                 <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-silver-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <circle cx="12" cy="12" r="9" />
@@ -50,8 +50,7 @@ export default function Booking() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="overflow-hidden rounded-2xl border border-white/8 bg-ink-800 p-2">
-            {/* PLACEHOLDER: replace with real Calendly link */}
+          <div className="overflow-hidden rounded-2xl border border-white/8 bg-ink-800/90 p-2 backdrop-blur-sm">
             <div
               className="calendly-inline-widget"
               data-url={CALENDLY_URL}

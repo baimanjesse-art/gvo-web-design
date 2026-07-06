@@ -3,7 +3,7 @@ import SectionHeading from './ui/SectionHeading.jsx'
 
 /*
  * Portfolio mockups are illustrative concept builds rendered in CSS
- * (browser-chrome frames with bespoke mini-layouts) — swap with real
+ * (browser-chrome frames with bespoke mini-layouts). Swap with real
  * project screenshots as they're delivered. Intentionally NOT labeled
  * as placeholders in the visible UI.
  */
@@ -83,7 +83,7 @@ function CafeSite() {
         <span className="mt-1 text-[7px] text-[#7a5b43]">Wood-fired · Locally sourced · Open 7 days</span>
       </div>
       <div className="mx-5 mt-2.5 flex flex-1 flex-col rounded-lg bg-white/70 p-3 shadow-sm">
-        <span className="block text-center text-[8px] font-extrabold tracking-[0.2em] text-[#8a3324]">— THE MENU —</span>
+        <span className="block text-center text-[8px] font-extrabold tracking-[0.2em] text-[#8a3324]">THE MENU</span>
         <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1.5">
           {[
             ['Hearth Skillet', '14'],
@@ -103,13 +103,13 @@ function CafeSite() {
         <div className="mt-auto flex items-center justify-center gap-1.5 border-t border-[#4a2c1a]/10 pt-2">
           <span className="h-1 w-1 rounded-full bg-[#8a3324]" />
           <span className="text-[6.5px] font-semibold italic text-[#7a5b43]">
-            Fresh sourdough daily — weekend brunch waitlist opens Friday
+            Fresh sourdough daily · weekend brunch waitlist opens Friday
           </span>
           <span className="h-1 w-1 rounded-full bg-[#8a3324]" />
         </div>
       </div>
       <div className="flex items-center justify-center gap-2 py-2 text-[7px] font-semibold text-[#7a5b43]">
-        <span>Mon–Sun 8a–3p</span><span className="h-0.5 w-0.5 rounded-full bg-[#7a5b43]" /><span>412 Mill Street</span>
+        <span>Mon to Sun 8a to 3p</span><span className="h-0.5 w-0.5 rounded-full bg-[#7a5b43]" /><span>412 Mill Street</span>
       </div>
     </div>
   )
@@ -235,7 +235,7 @@ const PROJECTS = [
 
 export default function Portfolio() {
   return (
-    <section id="work" className="scroll-mt-16 bg-ink-900 px-4 py-24 sm:px-6 md:py-32">
+    <section id="work" className="px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Our Work"

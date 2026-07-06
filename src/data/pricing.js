@@ -1,5 +1,5 @@
 /**
- * Canonical pricing data — used by both the Pricing section and the
+ * Canonical pricing data, used by both the Pricing section and the
  * Order form's total calculator. Update prices here only.
  */
 
@@ -11,9 +11,9 @@ export const TIERS = [
     monthly: 39,
     popular: false,
     bestFor:
-      'Solo operators & small shops who just need to exist online — landscapers, cleaners, contractors.',
-    includes: ['1-page site (home + sections: about, services, contact)'],
-    turnaround: '5–7 business days',
+      'Solo operators & small shops who just need to exist online, like landscapers, cleaners, and contractors.',
+    includes: ['1-page site (home plus sections: about, services, contact)'],
+    turnaround: '5 to 7 business days',
     monthlyIncludes: ['Hosting', 'SSL', 'Uptime monitoring', '1 content update / month'],
   },
   {
@@ -25,7 +25,7 @@ export const TIERS = [
     bestFor:
       'Established small businesses that want to look credible, rank locally, and offer online booking.',
     includes: ['Up to 5 pages (home, about, services, gallery, contact)'],
-    turnaround: '7–10 business days',
+    turnaround: '7 to 10 business days',
     monthlyIncludes: ['Hosting', 'SSL', 'Backups', 'Uptime monitoring', '2 content updates / month'],
   },
   {
@@ -37,7 +37,7 @@ export const TIERS = [
     bestFor:
       'Growth-minded businesses that want everything we offer: booking, blog/SEO, analytics, and priority support.',
     includes: ['Up to 10 pages'],
-    turnaround: '10–14 business days',
+    turnaround: '10 to 14 business days',
     monthlyIncludes: [
       'Hosting',
       'SSL',
@@ -91,7 +91,7 @@ export const ADDONS = [
 
 export const PAYMENT_TERMS = [
   '50% deposit due when you sign and we agree to move forward.',
-  '50% balance due upon completion — or rolled into your monthly maintenance plan, split evenly over the first 6 months.',
+  '50% balance due upon completion, or rolled into your monthly maintenance plan, split evenly over the first 6 months.',
   'If maintenance is canceled before the rolled-in balance is paid off, the remaining balance is due immediately.',
 ]
 
