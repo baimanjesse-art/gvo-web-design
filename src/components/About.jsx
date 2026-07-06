@@ -6,7 +6,7 @@ const TEAM = [
   {
     name: 'Jesse',
     title: 'Co-Founder · Strategy & Client Experience',
-    photo: '/images/team/jesse.jpg',
+    photo: '/images/team/jesse.webp',
     initial: 'J',
     bio: [
       'Jesse brings years of hands-on data analytics experience to GVO, having worked with teams and companies to organize their data and drive decisions that measurably improve performance. That background is the backbone of his approach to the web: he understands SEO, what search engines reward, and what a website actually needs to do to turn visitors into customers.',
@@ -16,7 +16,7 @@ const TEAM = [
   {
     name: 'Elliott',
     title: 'Co-Founder · Lead Developer',
-    photo: '/images/team/elliott.jpg',
+    photo: '/images/team/elliott.webp',
     initial: 'E',
     bio: [
       'Elliott is the engineering force behind every site GVO ships. A deeply skilled developer across many languages, his portfolio runs far beyond typical web work, from full games to anti-cheat systems, and that depth shows up in the quality and performance of everything he builds.',

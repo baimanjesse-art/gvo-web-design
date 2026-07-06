@@ -4,7 +4,7 @@ import SectionHeading from './ui/SectionHeading.jsx'
 
 /* Real Calendly scheduling link. Everything after the "?" styles the embed. */
 const CALENDLY_URL =
-  'https://calendly.com/gvo-web-design/consultation?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8e8e8&primary_color=c0c0c0'
+  'https://calendly.com/baimanjesse?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8e8e8&primary_color=c0c0c0'
 
 const HOURS = [
   { days: 'Mon to Fri', hours: '5:30 PM to 9:00 PM' },
